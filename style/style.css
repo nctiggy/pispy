@@ -1,0 +1,24 @@
+/* Stylesheet for PiSpy Camera Interface */
+
+body {
+  background-image: url('/style/funky.jpg');
+  background-repeat: repeat-y;
+  font-family: Arial;
+}
+
+h1 {
+}
+
+h2 {
+}
+
+hr.fancy {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+}
+
+#viewer {
+  position: absolute;
+  left: 110px;
+}
