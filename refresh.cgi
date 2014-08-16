@@ -13,7 +13,7 @@ LOCATION="Location: ${INDEX}"
 OUTFILE="capture.jpg"
 STILLCMD="raspistill -n -q 10 -w 720 -h 480 -t 1 -o"
 #THERMFILE="/sys/bus/w1/devices/28-000005ff95db/w1_slave" # Boise thermometer
-#THERMFILE="/sys/bus/w1/devices/28-000005fd70d4/w1_slave" # Seattle thermometer
+THERMFILE="/sys/bus/w1/devices/28-000005fd70d4/w1_slave" # Seattle thermometer
 
 # functions 
 # return current temperature in C and F
