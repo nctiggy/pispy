@@ -1,0 +1,4 @@
+#!/bin/bash
+
+wget https://www.dropbox.com/s/xdfcxm5hu71s97d/motion-mmal.tar.gz
+wget http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-arm-pi.tar.gz
