@@ -1,15 +1,40 @@
 /* Stylesheet for PiSpy Camera Interface */
 body {
-  background-image: url('/style/paper.jpg');
-  font-family: Arial;
+  background-image: url('/style/blue.jpg');
+  font-family: "Verdana", sans-serif;
+  color: white;
+}
+h2 {
+  color: white;
 }
 hr.fancy {
   height: 20px;
   border: 0;
-  box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+  box-shadow: inset 0 12px 12px -12px #FFFFFF;
 }
 #viewer {
   margin-left: auto;
   margin-right: auto;
   width: 768px;
+}
+#topbox {
+  width: 748px;
+  height: 44px;
+  padding-top: 2px;
+  padding-bottom: 20px;
+  padding-top: 2px;
+  padding-left: 10px;
+  border: 1px;
+  border-radius: 10px;
+  background-color: steelblue;
+  box-shadow: 10px 10px 5px #888888;
+}
+a:link {
+  color: white;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  background-color: steelblue;
 }
