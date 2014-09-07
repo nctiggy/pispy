@@ -1,8 +1,8 @@
 /* Stylesheet for PiSpy Camera Interface */
 body {
-  background-image: url('/style/dots.jpg');
+  background-image: url('/style/octo.jpg');
   font-family: "Verdana", sans-serif;
-  color: black;
+  color: white;
 }
 h2 {
   color: white;
@@ -26,15 +26,15 @@ hr.fancy {
   padding-left: 10px;
   border: 2px;
   border-radius: 10px;
-  background-color: burlywood;
+  background-color: darkgray;
   box-shadow: 10px 10px 5px #000000;
 }
 a:link {
-  color: black;
+  color: white;
 }
 a:visited {
-  color: black;
+  color: white;
 }
 a:hover {
-  background-color: burlywood;
+  background-color: darkgray;
 }
