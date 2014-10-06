@@ -1,0 +1,60 @@
+server {
+	listen   80;
+	root /home/pi/Dev/pispy;
+ 	access_log  /var/log/nginx/access_pispy.log;
+    	error_log   /var/log/nginx/error_pispy.log;
+	index index.html index.htm;
+	auth_basic 'PiSpy Login';
+	auth_basic_user_file /etc/nginx/htpasswd;
+	server_name pispy;
+
+	location / {
+		try_files $uri $uri/ /index.html;
+	}
+	location ~ /htpasswd {
+		deny all;
+	}
+   	location /live.jpg {
+		proxy_pass  http://localhost:8081/;
+		proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+		proxy_redirect off;
+		proxy_buffering off;
+		proxy_set_header        X-Real-IP       $remote_addr;
+		proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    	}
+   	location /archive {
+		autoindex on;
+    	}
+   	location /api {
+		proxy_pass  http://localhost:5000/;
+		proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+		proxy_redirect off;
+		proxy_buffering off;
+		proxy_set_header        X-Real-IP       $remote_addr;
+		proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    	}
+}
+
+# HTTPS server
+#
+#server {
+#	listen 443;
+#	server_name localhost;
+#
+#	root html;
+#	index index.html index.htm;
+#
+#	ssl on;
+#	ssl_certificate cert.pem;
+#	ssl_certificate_key cert.key;
+#
+#	ssl_session_timeout 5m;
+#
+#	ssl_protocols SSLv3 TLSv1;
+#	ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+#	ssl_prefer_server_ciphers on;
+#
+#	location / {
+#		try_files $uri $uri/ =404;
+#	}
+#}
