@@ -1,0 +1,4 @@
+# startup apiserver
+if [ -x /home/pi/Dev/pispy/apiserver.py ]; then
+  screen -S apiserver -d -m su - pi -c "/home/pi/Dev/pispy/apiserver.py"
+fi
