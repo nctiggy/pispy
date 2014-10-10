@@ -8,6 +8,6 @@ app.controller('TempController', function($scope, $http) {
       $scope.temps = data.currenttemp;
     }).
     error(function(data, status, headers, config) {
-      alert("FATAL: could not get contact API" + status);
+      alert("FATAL: could not get contact API " + status);
     });
 });
