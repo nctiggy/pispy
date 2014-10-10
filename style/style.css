@@ -1,11 +1,11 @@
 /* Stylesheet for PiSpy Camera Interface */
 body {
-  background-image: url('/style/octo.jpg');
+  background-image: url('/style/grngrid.jpg');
   font-family: "Verdana", sans-serif;
-  color: white;
+  color: black;
 }
 h2 {
-  color: white;
+  color: black;
 }
 hr.fancy {
   height: 20px;
@@ -19,14 +19,14 @@ hr.fancy {
 }
 #topbox {
   width: 748px;
-  height: 44px;
+  height: 40px;
   padding-top: 2px;
   padding-bottom: 20px;
   padding-top: 2px;
   padding-left: 10px;
   border: 2px;
   border-radius: 10px;
-  background-color: darkgray;
+  background-color: none;
   box-shadow: 10px 10px 5px #000000;
 }
 a:link {
