@@ -15,7 +15,7 @@
       <h3>Camera reads {{ temps.fahrenheit }} degrees F</h3>
     </div>
     <div ng-controller="EagleTempController">
-      <h3>Eagle,ID reads {{ eagletemp.temp }} degrees F</h3>
+      <h3>Eagle,ID reads {{ eagletemp.temp | number:1 }} degrees F</h3>
     </div>
   </div>
     <br />
