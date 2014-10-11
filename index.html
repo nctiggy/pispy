@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html ng-app="PiSpyApp">
+<html lang="en" ng-app="PiSpyApp">
   <head>
-    <title>PiSpy Webcam</title>
-    <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="/assets/touch-icon-iphone.png" /> 
+    <title>PiSpy Webcam</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/jumbotron-pispy.css" rel="stylesheet">
   </head>
-<body>
-  <script type="text/javascript" src="/assets/angular.min.js"></script>
-  <script type="text/javascript" src="/assets/controllers.js"></script>
-<div id="viewer">
-  <div id="topbox">
-    <h2>Welcome to the PiSpy Webcam</h2>  
-    <div ng-controller="TempController">
-      <h3>Camera reads {{ temps.fahrenheit }} degrees F</h3>
+  <body>
+    <script type="text/javascript" src="/assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/js/controllers.js"></script>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="">Temperatures</a></li>
+            <li><a ng-controller="EagleTempController" ng-mouseover="hover = eagletemp.temp" ng-mouseleave="hover = null" href="">Eagle {{ hover | number:1 }}</a></li>
+            <li><a ng-controller="SeattleTempController" ng-mouseover="hover = seattletemp.temp" ng-mouseleave="hover = null" href="">Seattle {{ hover | number:1 }}</a></li>
+            <li><a ng-controller="InternalTempController" ng-mouseover="hover = internaltemp.fahrenheit" ng-mouseleave="hover = null" href="">Internal {{ hover | number:1 }}</a></li>
+        </ul>
+        <h3 class="text-muted">PiSpy Webcam</h3>
+      </div>
+
+      <div class="jumbotron">
+        <img src="/live.jpg" alt="streaming image"/>
+        <p class="lead">When motion is detected an image is saved in the archive for about a week.</p>
+        <p><a class="btn btn-lg btn-success" href="/archive" role="button">Go to archive</a></p>
+      </div>
+      <div class="footer">
+        <table style="width:100%">
+          <tr>
+            <td> &copy; PiSpy 2014 Designed by <a href="http://twitter.com/briantwalter">&#64;briantwalter</a> in Washington </td>
+           <td align="right"><i>Version: 0.2.0</i></td>
+          </tr> 
+        </table>
+      </div>
     </div>
-    <div ng-controller="EagleTempController">
-      <h3>Eagle,ID reads {{ eagletemp.temp | number:1 }} degrees F</h3>
-    </div>
-  </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <img src="live.jpg" alt="PiSpy Video Feed"/>
-    <br />
-    When motion is detected an image is saved.  You can view those images in <a href="/archive">the archive</a>.
-    <hr class="fancy"/>
-    <i>Version: 0.1.0 </i>
-</div>
-</body>
+  </body>
 </html>
