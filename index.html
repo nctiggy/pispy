@@ -12,11 +12,14 @@
   <div id="topbox">
     <h2>Welcome to the PiSpy Webcam</h2>  
     <div ng-controller="TempController">
-      <div ng-repeat="temp in temps">
-        <h3>Current camera temperature is {{ temp.fahrenheit }} degrees F</h3>
-      </div>
+      <h3>Camera reads {{ temps.fahrenheit }} degrees F</h3>
+    </div>
+    <div ng-controller="EagleTempController">
+      <h3>Eagle,ID reads {{ eagletemp.temp }} degrees F</h3>
     </div>
   </div>
+    <br />
+    <br />
     <br />
     <br />
     <img src="live.jpg" alt="PiSpy Video Feed"/>

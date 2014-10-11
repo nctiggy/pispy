@@ -39,7 +39,7 @@ def json_temp():
       longc = re.sub(r't=', '', match.group())
       decc = float(longc) / 10;
       decf = float(((decc * 9) / 5) + 32)
-      currenttemp = [ { 'celsius': round(decc, 1), 'fahrenheit': round(decf, 1) } ]
+      currenttemp = { 'celsius': round(decc, 1), 'fahrenheit': round(decf, 1) }
       return jsonify({'currenttemp': currenttemp})
     else:
       return json_error()
