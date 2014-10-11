@@ -2,6 +2,7 @@
 <html lang="en" ng-app="PiSpyApp">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="apple-touch-icon" href="/assets/touch-icon-iphone.png" /> 
     <title>PiSpy Webcam</title>
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
@@ -13,10 +14,11 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="">Temperatures</a></li>
-            <li><a ng-controller="EagleTempController" ng-mouseover="hover = eagletemp.temp" ng-mouseleave="hover = null" href="">Eagle {{ hover | number:1 }}</a></li>
-            <li><a ng-controller="SeattleTempController" ng-mouseover="hover = seattletemp.temp" ng-mouseleave="hover = null" href="">Seattle {{ hover | number:1 }}</a></li>
-            <li><a ng-controller="InternalTempController" ng-mouseover="hover = internaltemp.fahrenheit" ng-mouseleave="hover = null" href="">Internal {{ hover | number:1 }}</a></li>
+          <!-- <li class="active"><a href="">Temperatures</a></li> -->
+          <li><a ng-controller="EagleTempController" ng-mouseover="hover = eagletemp.temp" ng-mouseleave="hover = null" href="">Eagle {{ hover | number:1 }}</a></li>
+          <li><a ng-controller="MilwaukeeTempController" ng-mouseover="hover = milwaukeetemp.temp" ng-mouseleave="hover = null" href="">Milwaukee {{ hover | number:1 }}</a></li>
+          <li><a ng-controller="SeattleTempController" ng-mouseover="hover = seattletemp.temp" ng-mouseleave="hover = null" href="">Seattle {{ hover | number:1 }}</a></li>
+          <li><a ng-controller="InternalTempController" ng-mouseover="hover = internaltemp.fahrenheit" ng-mouseleave="hover = null" href="">Internal {{ hover | number:1 }}</a></li>
         </ul>
         <h3 class="text-muted">PiSpy Webcam</h3>
       </div>
@@ -29,8 +31,8 @@
       <div class="footer">
         <table style="width:100%">
           <tr>
-            <td> &copy; PiSpy 2014 Designed by <a href="http://twitter.com/briantwalter">&#64;briantwalter</a> in Washington </td>
-           <td align="right"><i>Version: 0.2.0</i></td>
+            <td> &copy; PiSpy 2014 Designed by <a href="http://twitter.com/briantwalter">&#64;briantwalter</a> in Seattle, WA</td>
+           <td align="right"><i>Version: 0.2.1</i></td>
           </tr> 
         </table>
       </div>
