@@ -7,7 +7,7 @@
 #			number of save archive images
 
 # configuration
-ARCHDIR=/home/pi/Dev/pispy/archive
+ARCHDIR=/home/pi/src/pispy/archive
 DAYSOLD=8
 
 # main

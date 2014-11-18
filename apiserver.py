@@ -1,14 +1,19 @@
 #!/usr/bin/env python
 
 # apiserver.py		API server for the PiSpy camera
-# version		0.0.1
+# version		0.0.2
 # author		Brian Walter @briantwalter
 # description		RESTful API for controlling and 
 #			reading data for the PiSpy Camera
 
 # imports
+import os
+import hashlib
 import re
 from flask import Flask, jsonify, request
+
+# static configs
+path = "/home/pi/src/pispy/archive"
 
 # create flask application object
 app = Flask(__name__)
@@ -18,6 +23,7 @@ def json_error():
   return jsonify(error='generic', descrption='none')
 
 # routes for API calls
+## temperature sensor
 @app.route('/api/temp', methods=['GET', 'POST'])
 def json_temp():
   location = open('/etc/location', "r")
@@ -43,6 +49,23 @@ def json_temp():
       return jsonify({'currenttemp': currenttemp})
     else:
       return json_error()
+
+## list contents of archive
+@app.route('/api/archive/ls', methods=['GET'])
+def json_archive_ls():
+  if request.method == 'GET':
+    files = []
+    contents = sorted(os.listdir(path))
+    for file in contents:
+      filename = file
+      mtime = os.stat(path + "/" + file).st_mtime
+      bytes = os.stat(path + "/" + file).st_size
+      md5sum = hashlib.md5(path + "/" + file).hexdigest()
+      files.append({ 'filename': filename, 'mtime': mtime, 'bytes': bytes, 'md5sum': md5sum })
+  if files:
+    return jsonify({'archive_contents': files})
+  else:
+    return json_error()
 
 # main
 if __name__ == '__main__':
