@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="PiSpyApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/assets/touch-icon-iphone.png" /> 
+    <title>PiSpy Webcam Archive</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/jumbotron-pispy.css" rel="stylesheet">
+  </head>
+  <body>
+    <script type="text/javascript" src="/assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/js/controllers.js"></script>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <!-- <li class="active"><a href="">Temperatures</a></li> -->
+          <li><a ng-controller="EagleTempController" ng-mouseover="hover = eagletemp.temp" ng-mouseleave="hover = null" href="">Eagle {{ hover | number:1 }}</a></li>
+          <li><a ng-controller="MilwaukeeTempController" ng-mouseover="hover = milwaukeetemp.temp" ng-mouseleave="hover = null" href="">Milwaukee {{ hover | number:1 }}</a></li>
+          <li><a ng-controller="SeattleTempController" ng-mouseover="hover = seattletemp.temp" ng-mouseleave="hover = null" href="">Seattle {{ hover | number:1 }}</a></li>
+          <li><a ng-controller="InternalTempController" ng-mouseover="hover = internaltemp.fahrenheit" ng-mouseleave="hover = null" href="">Internal {{ hover | number:1 }}</a></li>
+        </ul>
+        <h3 class="text-muted"><a href="/">PiSpy</a> Webcam Archive</h3>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Bytes</th>
+            <th>MD5</th>
+            <th>Modified</th>
+          </tr>
+        </thead>
+        <tbody ng-controller="ArchiveController">
+          <tr ng-repeat="file in archive.contents">
+            <td><a href="/archive/{{ file.filename }}">{{ file.filename }}</a></td>
+            <td>{{ file.bytes }}</td>
+            <td>{{ file.md5sum }}</td>
+            <td>{{ file.mtime * 1000 | date:'yyyy-MM-dd HH:mm' }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <a class="btn btn-default" href="/archive" role="button">old archive</a>
+      <br/>
+      <br/>
+
+      <div class="footer">
+        <table style="width:100%">
+          <tr>
+            <td> &copy; <a href="/">PiSpy</a> 2014 Designed in Seattle, WA</td>
+           <td align="right"><i>Version: 0.2.2</i></td>
+          </tr> 
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
