@@ -1,7 +1,9 @@
 /* Angular.js controller for PiSpy */
-
 var app = angular.module('PiSpyApp', []);
 
+/*					*/
+/* Code for Tempeture functions		*/
+/*					*/
 app.controller('InternalTempController', function InternalTempController($scope, $http) {
   $http.get('/api/temp').
     success(function(data, status, headers, config) {
@@ -33,6 +35,18 @@ app.controller('SeattleTempController', function SeattleTempController($scope, $
   $http.get('http://api.openweathermap.org/data/2.5/weather?id=5809844&units=imperial').
     success(function(data, status, headers, config) {
       $scope.seattletemp = data.main;
+    }).
+    error(function(data, status, headers, config) {
+      alert("FATAL: could not get contact API " + status);
+    });
+});
+/*					*/
+/* Code for Archive functions		*/
+/*					*/
+app.controller('ArchiveController', function ArchiveController($scope, $http) {
+  $http.get('/api/archive/ls').
+    success(function(data, status, headers, config) {
+      $scope.archive = data;
     }).
     error(function(data, status, headers, config) {
       alert("FATAL: could not get contact API " + status);

@@ -61,9 +61,9 @@ def json_archive_ls():
       mtime = os.stat(path + "/" + file).st_mtime
       bytes = os.stat(path + "/" + file).st_size
       md5sum = hashlib.md5(path + "/" + file).hexdigest()
-      files.append({ 'filename': filename, 'mtime': mtime, 'bytes': bytes, 'md5sum': md5sum })
+      files.append({'filename': filename, 'mtime': mtime, 'bytes': bytes, 'md5sum': md5sum})
   if files:
-    return jsonify({'archive_contents': files})
+    return jsonify({'contents': files})
   else:
     return json_error()
 

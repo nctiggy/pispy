@@ -19,18 +19,18 @@
           <li><a ng-controller="SeattleTempController" ng-mouseover="hover = seattletemp.temp" ng-mouseleave="hover = null" href="">Seattle {{ hover | number:1 }}</a></li>
           <li><a ng-controller="InternalTempController" ng-mouseover="hover = internaltemp.fahrenheit" ng-mouseleave="hover = null" href="">Internal {{ hover | number:1 }}</a></li>
         </ul>
-        <h3 class="text-muted">PiSpy Webcam</h3>
+        <h3 class="text-muted"><a href="/">PiSpy</a> Webcam</h3>
       </div>
 
       <div class="jumbotron">
         <img src="/live.jpg" alt="streaming image"/>
         <p class="lead">When motion is detected an image is saved in the archive for about a week.</p>
-        <p><a class="btn btn-lg btn-success" href="/archive" role="button">Go to archive</a></p>
+        <p><a class="btn btn-lg btn-success" href="/archive.html" role="button">Go to archive</a></p>
       </div>
       <div class="footer">
         <table style="width:100%">
           <tr>
-            <td> &copy; PiSpy 2014 Designed in Seattle, WA</td>
+            <td> &copy; <a href="/">PiSpy</a> 2014 Designed in Seattle, WA</td>
            <td align="right"><i>Version: 0.2.2</i></td>
           </tr> 
         </table>
