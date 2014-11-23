@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # apiserver.py		API server for the PiSpy camera
-# version		0.0.2
+# version		0.0.3
 # author		Brian Walter @briantwalter
 # description		RESTful API for controlling and 
 #			reading data for the PiSpy Camera
@@ -13,7 +13,7 @@ import re
 from flask import Flask, jsonify, request
 
 # static configs
-path = "/home/pi/src/pispy/archive"
+path = "/home/pi/src/pispy/www/archive"
 
 # create flask application object
 app = Flask(__name__)

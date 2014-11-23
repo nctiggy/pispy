@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # prune			Prune the image archive
-# version		0.0.1
+# version		0.0.2
 # author		Brian Walter @briantwalter
 # description		Simple script to limit the 
 #			number of save archive images
 
 # configuration
-ARCHDIR=/home/pi/src/pispy/archive
+ARCHDIR=/home/pi/src/pispy/www/archive
 DAYSOLD=8
 
 # main
