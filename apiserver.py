@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # apiserver.py		API server for the PiSpy camera
-# version		0.0.4
+# version		0.0.5
 # author		Brian Walter @briantwalter
 # description		RESTful API for controlling and 
 #			reading data for the PiSpy Camera
@@ -74,9 +74,9 @@ def json_archive_ls():
 ## remove a file in the archive
 @app.route('/api/archive/rm/<filename>', methods=['GET', 'POST', 'DELETE'])
 def json_archive_rm(filename):
-  if request.method == 'GET' or request.method == 'POST':
+  if request.method == 'GET':
     return json_error_not_implemented()
-  if request.method == 'DELETE':
+  if request.method == 'POST' or request.method == 'DELETE':
     if os.path.isfile(path + "/" + filename):
       os.remove(path + "/" + filename)
       return jsonify({'status': 'removed file', 'filename': filename})

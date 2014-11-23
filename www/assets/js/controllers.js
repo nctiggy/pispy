@@ -43,7 +43,7 @@ app.controller('SeattleTempController', function SeattleTempController($scope, $
 /*					*/
 /* Code for Archive functions		*/
 /*					*/
-app.controller('ArchiveController', function ArchiveController($scope, $http) {
+app.controller('ArchiveControllerLS', function ArchiveControllerLS($scope, $http) {
   $http.get('/api/archive/ls').
     success(function(data, status, headers, config) {
       $scope.archive = data;
