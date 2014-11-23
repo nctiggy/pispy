@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # apiserver.py		API server for the PiSpy camera
-# version		0.0.3
+# version		0.0.4
 # author		Brian Walter @briantwalter
 # description		RESTful API for controlling and 
 #			reading data for the PiSpy Camera
@@ -10,6 +10,7 @@
 import os
 import hashlib
 import re
+import json
 from flask import Flask, jsonify, request
 
 # static configs
@@ -20,7 +21,10 @@ app = Flask(__name__)
 
 # non-routable functions
 def json_error():
-  return jsonify(error='generic', descrption='none')
+  return jsonify(status='error',error='generic', descrption='none')
+
+def json_error_not_implemented():
+  return jsonify(status='error',error='method', descrption='not implemented')
 
 # routes for API calls
 ## temperature sensor
@@ -66,6 +70,21 @@ def json_archive_ls():
     return jsonify({'contents': files})
   else:
     return json_error()
+
+## remove a file in the archive
+@app.route('/api/archive/rm/<filename>', methods=['GET', 'POST', 'DELETE'])
+def json_archive_rm(filename):
+  if request.method == 'GET' or request.method == 'POST':
+    return json_error_not_implemented()
+  if request.method == 'DELETE':
+    if os.path.isfile(path + "/" + filename):
+      os.remove(path + "/" + filename)
+      return jsonify({'status': 'removed file', 'filename': filename})
+    else:
+      return jsonify({'status': 'not a file', 'filename': filename})
+  else:
+    return json_error()
+
 
 # main
 if __name__ == '__main__':
