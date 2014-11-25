@@ -43,12 +43,48 @@ app.controller('SeattleTempController', function SeattleTempController($scope, $
 /*					*/
 /* Code for Archive functions		*/
 /*					*/
-app.controller('ArchiveControllerLS', function ArchiveControllerLS($scope, $http) {
-  $http.get('/api/archive/ls').
-    success(function(data, status, headers, config) {
-      $scope.archive = data;
-    }).
-    error(function(data, status, headers, config) {
+app.controller('ArchiveController', function ($scope, FileMgmt, alertService) {
+  $scope.listFiles = function() {
+  	FileMgmt.lsFiles.success(function(data){
+  		$scope.archive = data;
+		}).
+		error(function(data,status){
       alert("FATAL: could not get contact API " + status);
-    });
+		})
+	};
+  $scope.deleteFile = function(fileName, indexNum) {
+		FileMgmt.rmFile(fileName).success(function(data) {
+  		$scope.archive.contents.splice(indexNum,1)
+		}).
+		error(function(){
+			alert("FATAL: could not get contact API " + status);
+		})
+	};
+});
+
+app.factory("FileMgmt", function($http) {
+	return {
+		rmFile: function(fileName){
+			return $http.post('/api/archive/rm/' + fileName)
+		}
+		lsFiles: fucntion(){
+			return $http.get('/api/archive/ls')
+		}
+	}
+});
+
+app.factory('alertService', fucntion($rootScope) {
+	var alertService = {};
+
+	$rootScope.alerts = [];
+
+	alertService.add = function(type, msg) {
+		$rootScope.alerts.push({'type': type, 'msg': msg});
+	};
+
+	alertService.closeAlert = function(index) {
+		$rootScope.alerts.splice(index,1);
+	};
+
+	return alertService;
 });

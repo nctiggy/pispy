@@ -1,6 +1,9 @@
     <!-- start top.html --> 
     <script type="text/javascript" src="/assets/js/angular.min.js"></script>
     <script type="text/javascript" src="/assets/js/controllers.js"></script>
+		<div>
+  		<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{ alert.msg }}</alert>
+		</div>
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">

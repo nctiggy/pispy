@@ -20,7 +20,7 @@
             <td>{{ file.md5sum }}</td>
             <td>{{ file.mtime * 1000 | date:'yyyy-MM-dd HH:mm' }}</td>
             <td>
-              <a href ng-click="archive.contents.splice($index,1)">
+							<a href ng-click="deleteFile({{file.filename}}, $index)">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true">
                 </span>
               </a>
