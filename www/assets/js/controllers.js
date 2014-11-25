@@ -43,21 +43,22 @@ app.controller('SeattleTempController', function SeattleTempController($scope, $
 /*					*/
 /* Code for Archive functions		*/
 /*					*/
-app.controller('ArchiveController', function ($scope, FileMgmt, alertService) {
+app.controller('ArchiveController', function ($scope, FileMgmt, AlertService) {
   $scope.listFiles = function() {
   	FileMgmt.lsFiles.success(function(data){
   		$scope.archive = data;
 		}).
 		error(function(data,status){
-      alert("FATAL: could not get contact API " + status);
+      AlertService.add(status, "FATAL: could not get contact API");
 		})
 	};
   $scope.deleteFile = function(fileName, indexNum) {
 		FileMgmt.rmFile(fileName).success(function(data) {
   		$scope.archive.contents.splice(indexNum,1)
+  		AlertService.add(data.status, data.message);
 		}).
-		error(function(){
-			alert("FATAL: could not get contact API " + status);
+		error(function(data,status){
+			AlertService.add(status, "FATAL: could not contact API");
 		})
 	};
 });
@@ -73,7 +74,7 @@ app.factory("FileMgmt", function($http) {
 	}
 });
 
-app.factory('alertService', fucntion($rootScope) {
+app.factory('AlertService', fucntion($rootScope) {
 	var alertService = {};
 
 	$rootScope.alerts = [];

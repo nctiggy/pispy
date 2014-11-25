@@ -79,9 +79,9 @@ def json_archive_rm(filename):
   if request.method == 'POST' or request.method == 'DELETE':
     if os.path.isfile(path + "/" + filename):
       os.remove(path + "/" + filename)
-      return jsonify({'status': 'removed file', 'filename': filename})
+      return jsonify({'status': 'success', 'message': 'Successfully removed ' + filename})
     else:
-      return jsonify({'status': 'not a file', 'filename': filename})
+      return jsonify({'status': 'error', 'message': 'Failed to remove ' + filename})
   else:
     return json_error()
 

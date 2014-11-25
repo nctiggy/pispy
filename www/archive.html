@@ -3,7 +3,7 @@
   <!--# include file="head.html" -->
   <body>
   <!--# include file="top.html" -->
-      <table class="table table-striped">
+      <table class="table table-striped" ng-controller="ArchiveController">
         <thead>
           <tr>
             <th>Filename</th>
@@ -13,7 +13,7 @@
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody ng-controller="ArchiveControllerLS">
+        <tbody ng-init="listFiles()">
           <tr ng-repeat="file in archive.contents">
             <td><a href="/archive/{{ file.filename }}">{{ file.filename }}</a></td>
             <td>{{ file.bytes / 1024 | number:1 }}</td>
