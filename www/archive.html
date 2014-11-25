@@ -13,7 +13,7 @@
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody ng-init="listFiles()">
+        <tbody>
           <tr ng-repeat="file in archive.contents">
             <td><a href="/archive/{{ file.filename }}">{{ file.filename }}</a></td>
             <td>{{ file.bytes / 1024 | number:1 }}</td>

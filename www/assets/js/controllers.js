@@ -61,6 +61,7 @@ app.controller('ArchiveController', function ($scope, FileMgmt, AlertService) {
 			AlertService.add(status, "FATAL: could not contact API");
 		})
 	};
+	$scope.listFiles();
 });
 
 app.factory("FileMgmt", function($http) {
